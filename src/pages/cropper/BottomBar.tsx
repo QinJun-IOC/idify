@@ -27,129 +27,129 @@ export function BottomBar() {
     setFlipVertical,
   } = useCropStore()
   return (
-    <Paper
-      className="relative flex flex-col grow-0 shrink-0 rounded-t-2xl sm:mx-auto sm:w-[400px]"
-      square
-      elevation={0}
-    >
-      {active === 'spec' ? (
-        <SpecPicker
-          value={spec}
-          onClose={() => {
-            setActive('')
-          }}
-          onPick={(spec) => {
-            setActive('')
-            setSpec(spec)
-          }}
-        />
-      ) : null}
-      {active === 'zoom' ? (
-        <RangePicker
-          value={zoom}
-          min={CROPPER_ZOOM_MIN}
-          max={CROPPER_ZOOM_MAX}
-          step={0.01}
-          segment={5}
-          unit="%"
-          format={(value) => Math.round(value * 100)}
-          onChange={setZoom}
-        />
-      ) : null}
-      {active === 'rotate' ? (
-        <RangePicker
-          value={rotation}
-          min={-180}
-          max={180}
-          step={2}
-          segment={5}
-          unit="°"
-          format={(value) => Math.round(value)}
-          onChange={setRotation}
-        />
-      ) : null}
-      {active === 'flip' ? (
+      <Paper
+          className="relative flex flex-col grow-0 shrink-0 rounded-t-2xl sm:mx-auto sm:w-[400px]"
+          square
+          elevation={0}
+      >
+        {active === 'spec' ? (
+            <SpecPicker
+                value={spec}
+                onClose={() => {
+                  setActive('')
+                }}
+                onPick={(spec) => {
+                  setActive('')
+                  setSpec(spec)
+                }}
+            />
+        ) : null}
+        {active === 'zoom' ? (
+            <RangePicker
+                value={zoom}
+                min={CROPPER_ZOOM_MIN}
+                max={CROPPER_ZOOM_MAX}
+                step={0.01}
+                segment={5}
+                unit="%"
+                format={(value) => Math.round(value * 100)}
+                onChange={setZoom}
+            />
+        ) : null}
+        {active === 'rotate' ? (
+            <RangePicker
+                value={rotation}
+                min={-180}
+                max={180}
+                step={2}
+                segment={5}
+                unit="°"
+                format={(value) => Math.round(value)}
+                onChange={setRotation}
+            />
+        ) : null}
+        {active === 'flip' ? (
+            <Stack
+                className="px-[16px] py-[12px]"
+                direction="row"
+                justifyContent="space-around"
+            >
+              <Button
+                  color="inherit"
+                  startIcon={<FlipIcon />}
+                  onClick={() => {
+                    setFlipHorizontal(!useCropStore.getState().flipHorizontal)
+                  }}
+              >
+                水平翻转
+              </Button>
+              <Button
+                  color="inherit"
+                  startIcon={<FlipIcon className="rotate-90" />}
+                  onClick={() => {
+                    setFlipVertical(!useCropStore.getState().flipVertical)
+                  }}
+              >
+                垂直翻转
+              </Button>
+            </Stack>
+        ) : null}
+        {active ? <Divider /> : null}
         <Stack
-          className="px-[16px] py-[12px]"
-          direction="row"
-          justifyContent="space-around"
+            className="py-[6px] px-[10px]"
+            direction="row"
+            justifyContent="space-around"
         >
           <Button
-            color="inherit"
-            startIcon={<FlipIcon />}
-            onClick={() => {
-              setFlipHorizontal(!useCropStore.getState().flipHorizontal)
-            }}
+              size="small"
+              color={active === 'spec' ? 'primary' : 'inherit'}
+              onClick={() => {
+                setActive((prevActive) => (prevActive === 'spec' ? '' : 'spec'))
+              }}
           >
-            Flip horizontal
+            <Stack direction="column" alignItems="center" spacing={0.5}>
+              <AspectRatioIcon fontSize="small" />
+              <span>{`${spec.resolution.width}*${spec.resolution.height}`}</span>
+            </Stack>
           </Button>
           <Button
-            color="inherit"
-            startIcon={<FlipIcon className="rotate-90" />}
-            onClick={() => {
-              setFlipVertical(!useCropStore.getState().flipVertical)
-            }}
+              size="small"
+              color={active === 'zoom' ? 'primary' : 'inherit'}
+              onClick={() => {
+                setActive((prevActive) => (prevActive === 'zoom' ? '' : 'zoom'))
+              }}
           >
-            Flip vertical
+            <Stack direction="column" alignItems="center" spacing={0.5}>
+              <ZoomInMapIcon fontSize="small" />
+              <span>居中缩放</span>
+            </Stack>
+          </Button>
+          <Button
+              size="small"
+              color={active === 'rotate' ? 'primary' : 'inherit'}
+              onClick={() => {
+                setActive((prevActive) => (prevActive === 'rotate' ? '' : 'rotate'))
+              }}
+          >
+            <Stack direction="column" alignItems="center" spacing={0.5}>
+              <CropRotateIcon fontSize="small" />
+              <span>旋转</span>
+            </Stack>
+          </Button>
+          <Button
+              size="small"
+              color={active === 'flip' ? 'primary' : 'inherit'}
+              onClick={() => {
+                setActive((prevActive) => (prevActive === 'flip' ? '' : 'flip'))
+              }}
+          >
+            <Stack direction="column" alignItems="center" spacing={0.5}>
+              <FlipIcon fontSize="small" />
+              <span>翻转</span>
+            </Stack>
           </Button>
         </Stack>
-      ) : null}
-      {active ? <Divider /> : null}
-      <Stack
-        className="py-[6px] px-[10px]"
-        direction="row"
-        justifyContent="space-around"
-      >
-        <Button
-          size="small"
-          color={active === 'spec' ? 'primary' : 'inherit'}
-          onClick={() => {
-            setActive((prevActive) => (prevActive === 'spec' ? '' : 'spec'))
-          }}
-        >
-          <Stack direction="column" alignItems="center" spacing={0.5}>
-            <AspectRatioIcon fontSize="small" />
-            <span>{`${spec.resolution.width}*${spec.resolution.height}`}</span>
-          </Stack>
-        </Button>
-        <Button
-          size="small"
-          color={active === 'zoom' ? 'primary' : 'inherit'}
-          onClick={() => {
-            setActive((prevActive) => (prevActive === 'zoom' ? '' : 'zoom'))
-          }}
-        >
-          <Stack direction="column" alignItems="center" spacing={0.5}>
-            <ZoomInMapIcon fontSize="small" />
-            <span>Zoom</span>
-          </Stack>
-        </Button>
-        <Button
-          size="small"
-          color={active === 'rotate' ? 'primary' : 'inherit'}
-          onClick={() => {
-            setActive((prevActive) => (prevActive === 'rotate' ? '' : 'rotate'))
-          }}
-        >
-          <Stack direction="column" alignItems="center" spacing={0.5}>
-            <CropRotateIcon fontSize="small" />
-            <span>Rotate</span>
-          </Stack>
-        </Button>
-        <Button
-          size="small"
-          color={active === 'flip' ? 'primary' : 'inherit'}
-          onClick={() => {
-            setActive((prevActive) => (prevActive === 'flip' ? '' : 'flip'))
-          }}
-        >
-          <Stack direction="column" alignItems="center" spacing={0.5}>
-            <FlipIcon fontSize="small" />
-            <span>Flip</span>
-          </Stack>
-        </Button>
-      </Stack>
-    </Paper>
+      </Paper>
   )
 }
 

@@ -122,8 +122,8 @@ export const BACKGROUND_COLORS = [
 
 export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
   {
-    name: 'one-inch',
-    title: 'One inch',
+    name: '一寸',
+    title: '一寸',
     aspectRatio: 295 / 413,
     resolution: {
       width: 295,
@@ -136,8 +136,8 @@ export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
     color: '#ffffff',
   },
   {
-    name: 'two-inch',
-    title: 'Two inch',
+    name: '两寸',
+    title: '两寸',
     aspectRatio: 413 / 579,
     resolution: {
       width: 413,
@@ -150,8 +150,8 @@ export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
     color: '#ffffff',
   },
   {
-    name: 'large-one-inch',
-    title: 'Large one inch',
+    name: '大一寸',
+    title: '大一寸',
     aspectRatio: 390 / 567,
     resolution: {
       width: 390,
@@ -164,8 +164,8 @@ export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
     color: '#ffffff',
   },
   {
-    name: 'Small-one-inch',
-    title: 'Small one inch',
+    name: '小一寸',
+    title: '小一寸',
     aspectRatio: 260 / 378,
     resolution: {
       width: 260,
@@ -178,8 +178,8 @@ export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
     color: '#ffffff',
   },
   {
-    name: 'large-two-inch',
-    title: 'Large two inch',
+    name: '大两寸',
+    title: '大两寸',
     aspectRatio: 413 / 626,
     resolution: {
       width: 413,
@@ -192,8 +192,8 @@ export const ID_PHOTO_SPECS: IDPhotoSpec[] = [
     color: '#ffffff',
   },
   {
-    name: 'Small-two-inch',
-    title: 'Small two inch',
+    name: '小两寸',
+    title: '小两寸',
     aspectRatio: 413 / 531,
     resolution: {
       width: 413,

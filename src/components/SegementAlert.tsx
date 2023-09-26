@@ -11,10 +11,10 @@ import { TransitionProps } from '@mui/material/transitions'
 const ALERTED_CACHE = 'idify.sgement.alert'
 
 const Transition = forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>
-  },
-  ref: React.Ref<unknown>
+    props: TransitionProps & {
+      children: React.ReactElement<any, any>
+    },
+    ref: React.Ref<unknown>
 ) {
   return <Fade ref={ref} {...props} />
 })
@@ -24,8 +24,8 @@ export function SegementAlert() {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined
     if (
-      localStorage.getItem(ALERTED_CACHE) !== '1' &&
-      sessionStorage.getItem(ALERTED_CACHE) !== '1'
+        localStorage.getItem(ALERTED_CACHE) !== '1' &&
+        sessionStorage.getItem(ALERTED_CACHE) !== '1'
     ) {
       sessionStorage.setItem(ALERTED_CACHE, '1')
       timer = setTimeout(() => {
@@ -43,31 +43,29 @@ export function SegementAlert() {
     setOpen(false)
   }, [])
   return (
-    <Dialog open={open} TransitionComponent={Transition} onClose={handleClose}>
-      <DialogTitle>Removing photo backgound</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Idify will remove the image background in the background, and the
-          progress will be displayed in the upper right corner. This process may
-          take a little time, so please be patient. Before proceeding, you can
-          select the photo size and crop it. We can move on to the next step
-          once the process is complete.
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={() => {
-            handleClose()
-            localStorage.setItem(ALERTED_CACHE, '1')
-          }}
-        >
-          Don't show agin
-        </Button>
-        <Button onClick={handleClose} autoFocus>
-          Ok
-        </Button>
-      </DialogActions>
-    </Dialog>
+      <Dialog open={open} TransitionComponent={Transition} onClose={handleClose}>
+        <DialogTitle>清除相片背景</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            页面将在后台移除图像的背景，并且进度将显示在右上角。
+            这个过程可能需要一些时间，请耐心等待。在继续之前，您可以选择照片尺寸并进行裁剪。
+            一旦过程完成，我们可以继续下一步。
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+              onClick={() => {
+                handleClose()
+                localStorage.setItem(ALERTED_CACHE, '1')
+              }}
+          >
+            不再显示
+          </Button>
+          <Button onClick={handleClose} autoFocus>
+            确认
+          </Button>
+        </DialogActions>
+      </Dialog>
   )
 }
 

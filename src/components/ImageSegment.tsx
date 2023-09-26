@@ -28,41 +28,41 @@ export function ImageSegment() {
   }, [loading])
   if (loading) {
     return (
-      <Tooltip
-        arrow
-        open={tooltipOpen}
-        placement="left"
-        title={step === 1 ? 'AI model downloading ...' : 'Image segmenting...'}
-      >
-        <Box className="relative z-10">
-          <CircularProgress
-            className="block text-white"
-            variant="determinate"
-            color="info"
-            size={30}
-            value={progress}
-          />
-          <Box className="absolute top-1/2 left-1/2 text-white text-xs font-bold scale-75 -translate-x-1/2 -translate-y-1/2">
-            {`${Math.floor(progress)}%`}
+        <Tooltip
+            arrow
+            open={tooltipOpen}
+            placement="left"
+            title={step === 1 ? 'AI model 下载 ...' : '图片处理中...'}
+        >
+          <Box className="relative z-10">
+            <CircularProgress
+                className="block text-white"
+                variant="determinate"
+                color="info"
+                size={30}
+                value={progress}
+            />
+            <Box className="absolute top-1/2 left-1/2 text-white text-xs font-bold scale-75 -translate-x-1/2 -translate-y-1/2">
+              {`${Math.floor(progress)}%`}
+            </Box>
           </Box>
-        </Box>
-      </Tooltip>
+        </Tooltip>
     )
   }
   if (error) {
     return (
-      <IconButton
-        className="relative z-10 text-white"
-        size="small"
-        onClick={() => {
-          const { image } = useCropStore.getState()
-          if (image) {
-            process(image)
-          }
-        }}
-      >
-        <ReplayOutlinedIcon />
-      </IconButton>
+        <IconButton
+            className="relative z-10 text-white"
+            size="small"
+            onClick={() => {
+              const { image } = useCropStore.getState()
+              if (image) {
+                process(image)
+              }
+            }}
+        >
+          <ReplayOutlinedIcon />
+        </IconButton>
     )
   }
   return null
