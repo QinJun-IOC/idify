@@ -52,7 +52,7 @@ export default function Welcome() {
           className="relative top-[-4px] mr-1 w-12 h-12 align-middle"
           src="/logo.svg"
         />{' '}
-        IDIFY
+        TinyIdify
       </Typography>
       <Box className="h-8 grow" />
       <LayoutBox className="self-center shrink-0 w-[400px] h-[400px] max-w-[100vw] max-h-[100vw]">
